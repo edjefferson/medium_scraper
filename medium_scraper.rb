@@ -9,7 +9,7 @@ if ARGV[0] == nil
   puts "enter a medium username"
 end
 
-user_name = ARGV[0]
+user_name = ARGV[0].downcase
 if user_name[0] == "@"
   
   user_name = user_name[1..-1]
@@ -60,4 +60,4 @@ posts.map! do |post|
 
 end
 
-File.open("posts.xml", 'w') { |file| file.write(XmlSimple.xml_out(posts, {"RootName" => "posts", "AnonymousTag" => "post"})) }
+File.open("#{user_name}.xml", 'w') { |file| file.write(XmlSimple.xml_out(posts, {"RootName" => "posts", "AnonymousTag" => "post"})) }
